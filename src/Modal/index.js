@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, TouchableOpacity, View, StyleSheet } from 'react-native'
+import { Text, TouchableOpacity, View, StyleSheet, Modal as DefaultModal } from 'react-native'
 import Modal from 'react-native-modal'
 
 export default class ModalExample extends Component {
@@ -37,6 +37,7 @@ export default class ModalExample extends Component {
         {this._renderButton('Modal that can be closed on backdrop press', () =>
           this.setState({ visibleModal: 6 }),
         )}
+        {this._renderButton('Native modal', () => this.setState({ visibleModal: 7 }))}
         <Modal isVisible={this.state.visibleModal === 1}>{this._renderModalContent()}</Modal>
         <Modal
           isVisible={this.state.visibleModal === 2}
@@ -76,6 +77,15 @@ export default class ModalExample extends Component {
         >
           {this._renderModalContent()}
         </Modal>
+        <DefaultModal
+          style={styles.bottomModal}
+          animationType='slide'
+          transparent={true}
+          visible={this.state.visibleModal === 7}
+          onRequestClose={() => { alert('Modal has been closed.') }}
+        >
+          {this._renderModalContent()}
+        </DefaultModal>
       </View>
     )
   }
