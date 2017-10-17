@@ -1,29 +1,14 @@
-import React, { Component } from 'react'
 import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native'
+  StackNavigator,
+} from 'react-navigation'
+import Home from './Home'
+import TabView from './TabView'
+import Modal from './Modal'
 
-class RNBlank extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          I'm RNBlank!
-        </Text>
-      </View>
-    )
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }
+const RNBlank = StackNavigator({
+  Home: { screen: Home },
+  TabView: { screen: TabView },
+  Modal: { screen: Modal },
 })
 
 export default RNBlank
